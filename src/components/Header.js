@@ -12,6 +12,13 @@ export default () => (
       >
         Reset
       </NavLink>
+      <NavLink
+        to='/pass'
+        className='Header-navLink'
+        activeClassName='Header-isActive'
+      >
+        Pass
+      </NavLink>
     </nav>
   </header>
 )

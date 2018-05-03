@@ -10,28 +10,41 @@ class Email extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
-        <div className="flex flex-column mt3">
-          <input
-            className="mb2"
-            value={this.state.email}
-            onChange={e => this.setState({ email: e.target.value })}
-            type="text"
-            placeholder="The Email for the User"
-          />
-        </div>
-        <button onClick={() => this._createLink()}>Submit</button>
-      </div>
+
+      <div>
+      <h1>Forget Password?</h1>
+      <form className="form" id="formulario" onSubmit={this._createLink.bind(this)}>
+        <fieldset>
+          <div className=" form-group">
+            <div className="input-group">
+              <p>Write your email</p>
+              <input id="passInput" type="email" className="form-control" onChange={(e)=> this.setState({email: e.target.value})}/>
+            </div>
+          </div>
+          <div className="form-group">
+            <input className="btn btn-lg btn-primary btn-block" value="Verify Email" type="submit"/>
+          </div>
+    </fieldset>
+    </form>
+    </div>
     )
   }
 
-  _createLink = async () => {
+  _createLink = async (e) => {
+    e.preventDefault();
   const { email } = this.state
-  this.props.resetPassword({
+  await this.props.resetPassword({
     variables: {
       email
     }
   })
+  if (this.props.resetPassword==null) {
+    console.log('flase');
+  }
+  else {
+    console.log('tue');
+  }
+  console.log(this.state);
 }
 
 }
@@ -43,5 +56,4 @@ const RESET_PASSWORD = gql`
   }
 `
 
-// 3
 export default graphql(RESET_PASSWORD, { name: 'resetPassword' })(Email)
