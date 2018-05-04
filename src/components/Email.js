@@ -4,13 +4,16 @@ import gql from 'graphql-tag'
 
 
 class Email extends Component {
-  state = {
+  constructor(props){
+    super(props);
+  this.state = {
     email: '',
+    show: false,
   }
+}
 
   render() {
     return (
-
       <div>
       <h1>Forget Password?</h1>
       <form className="form" id="formulario" onSubmit={this._createLink.bind(this)}>
@@ -19,6 +22,8 @@ class Email extends Component {
             <div className="input-group">
               <p>Write your email</p>
               <input id="passInput" type="email" className="form-control" onChange={(e)=> this.setState({email: e.target.value})}/>
+              { this.state.show ? <div className="alert alert-danger">
+    This email doesn´t exist </div> : null}
             </div>
           </div>
           <div className="form-group">
@@ -32,19 +37,19 @@ class Email extends Component {
 
   _createLink = async (e) => {
     e.preventDefault();
-  const { email } = this.state
-  await this.props.resetPassword({
+  const email  = this.state.email;
+  const result = await this.props.resetPassword({
     variables: {
       email
     }
-  })
-  if (this.props.resetPassword==null) {
-    console.log('flase');
+  });
+  if (result.data.resetPassword) {
+    this.props.history.push('/confirm');
   }
   else {
-    console.log('tue');
+    document.getElementById('passInput').value="";
+    this.setState({show: true});
   }
-  console.log(this.state);
 }
 
 }

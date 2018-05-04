@@ -8,6 +8,7 @@ import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloProvider } from 'react-apollo'
 
+
 const GRAPHCMS_API = 'https://api-dev.miconcierge.mx/graphql'
 
 const client = new ApolloClient({
