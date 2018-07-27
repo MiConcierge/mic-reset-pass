@@ -21,9 +21,12 @@ class Email extends Component {
           <div className=" form-group">
             <div className="input-group">
               <p>Write your email</p>
-              <input id="passInput" type="email" className="form-control" onChange={(e)=> this.setState({email: e.target.value})}/>
-              { this.state.show ? <div className="alert alert-danger">
-    This email doesn´t exist </div> : null}
+              <input autoComplete={false} id="passInput" type="email" className="form-control" onChange={(e)=> this.setState({email: e.target.value})}/>
+              {
+                this.state.show
+                  ? <div style={{ textAlign: 'center' }} className="alert alert-danger">This email doesn´t exist </div>
+                  : null
+              }
             </div>
           </div>
           <div className="form-group">
