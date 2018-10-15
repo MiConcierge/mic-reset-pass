@@ -9,7 +9,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloProvider } from 'react-apollo'
 
 
-const GRAPHCMS_API = 'https://api-dev.miconcierge.mx/graphql'
+const GRAPHCMS_API = 'https://api-staging.miconcierge.mx/graphql'
 
 const client = new ApolloClient({
   link: new HttpLink({ uri: GRAPHCMS_API }),
