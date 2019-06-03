@@ -60,7 +60,10 @@ class Email extends Component {
 // 1
 const RESET_PASSWORD = gql`
   mutation resetPassword($email: String!) {
-    resetPassword(email: $email)
+    sendResetPassword(email: $email) {
+      success,
+      message
+    }
   }
 `
 
