@@ -15,13 +15,13 @@ class Email extends Component {
   render() {
     return (
       <div>
-      <h1>Forget Password?</h1>
+      <h1>Forgot Password?</h1>
       <form className="form" id="formulario" onSubmit={this._createLink.bind(this)}>
         <fieldset>
           <div className=" form-group">
             <div className="input-group">
-              <p>Write your email</p>
-              <input autoComplete={false} id="passInput" type="email" className="form-control" onChange={(e)=> this.setState({email: e.target.value})}/>
+              <p>Type your email</p>
+              <input autoComplete="off" id="passInput" type="email" className="form-control" onChange={(e)=> this.setState({email: e.target.value})}/>
               {
                 this.state.show
                   ? <div style={{ textAlign: 'center' }} className="alert alert-danger">This email doesn´t exist </div>
@@ -46,7 +46,7 @@ class Email extends Component {
       email
     }
   });
-  if (result.data.resetPassword) {
+  if (result.data.sendResetPassword) {
     this.props.history.push('/confirm');
   }
   else {
