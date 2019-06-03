@@ -7,7 +7,7 @@ class Confirmation extends Component {
       <div>
       <h1>Email Sent Successfully</h1>
       <br></br>
-      <h3>We have sent you an email to verify your account and continue with the process.</h3>
+      <h3 className="justified">We have sent you an email to verify your account and continue with the process.</h3>
     </div>
     )
   }
